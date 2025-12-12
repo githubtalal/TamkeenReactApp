@@ -1,0 +1,54 @@
+.faq-breadCrumb {
+    margin-top: 100px;
+    background-color: #F3EFFE;
+}
+
+.faq-breadCrumb a {
+    text-decoration: none;
+}
+
+.faq-breadCrumb li {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.faq-breadCrumb li:not(.active) {
+    color: #6E7485
+}
+
+.faq-breadCrumb li.active {
+    color: #1D2026
+}
+
+.faqs > *:first-of-type {
+    width: 40%;
+    margin-top: 50px;
+}
+
+.faqs > *:last-of-type {
+    width: 50%;
+}
+
+.faqs .accordion-body {
+    color: #9C9C9C;
+    font-weight: 500;
+    outline-style: 24px;
+}
+
+.faqs .accordion-header {
+    color: #0A2540;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.faqs a {
+    color: #1D2026 !important;
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    transition: 0.2s linear !important;
+}
+
+.faqs a:hover {
+    background-color: #8B5CF6 !important;
+    color: #ffffff !important;
+}

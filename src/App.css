@@ -1,0 +1,107 @@
+:root {
+  --toastify-color-success: #4CAF50;
+  --toastify-color-error: #F44336;
+  --toastify-toast-width: 400px;
+  --toastify-toast-bd-radius: 8px; /* border-radius */
+  --toastify-font-family: sans-serif;
+}
+
+
+* {
+  font-family: "Georgia", serif !important;
+}
+
+.root>nav {
+  background-color: #6341AF !important;
+  padding: 20px 0 !important;
+}
+
+.nav-link {
+  margin-inline-end: 30px !important;
+}
+
+.nav-link+p {
+  background-color: #E7DDB5;
+  transition: transform 0.3s linear;
+  width: 70%;
+  height: 3px;
+  transform: scale(0);
+  transform-origin: bottom right;
+  margin-bottom: 0 !important;
+  margin-top: -5px;
+  border-radius: 9px;
+}
+
+.nav-link.active+p {
+  transform: scale(1);
+  transform-origin: bottom left;
+}
+
+.nav-link:hover+p {
+  transform: scale(1);
+  transform-origin: bottom left;
+}
+
+.navbar-brand {
+  margin-inline-end: 40px !important;
+}
+
+.error {
+  margin-top: 100px;
+}
+
+.error p {
+  color: #5C5C5C;
+  font-weight: 400;
+  font-size: 45px;
+}
+
+.error a {
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #7E54E0;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.dropDown-options {
+  background-color: #ffffff !important;
+}
+
+.dropDown-options>* {
+  color: #333333 !important;
+  font-size: 18px !important;
+  font-weight: 400;
+}
+
+.dropDown-options>*:hover {
+  background-color: #7E54E0 !important;
+}
+
+.user-dropDown>button::after {
+  display: none !important;
+}
+
+.loading-container>div {
+  height: 45px;
+  width: 45px;
+  background-color: transparent;
+  border-radius: 50%;
+  border-top: 4px solid #2c175f;
+  border-left: 4px solid #2c175f;
+  animation: rotateLoading 0.7s linear infinite;
+}
+
+@keyframes rotateLoading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.MuiPagination-root ul {
+  padding-bottom: 30px;
+}

@@ -1,0 +1,35 @@
+.article-details .title {
+    color: #503783;
+}
+
+.article-details center {
+    margin-bottom: 70px;
+}
+
+.article-details h2 {
+    color: #5446d2
+}
+
+.article-details p {
+    color: #586e72;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.article-details> div > div img {
+    box-shadow: 7px 7px 12px #7997b9, -7px -7px 12px #7997b9;
+}
+
+.article-details .galary .col-lg-4>div {
+    box-shadow: 7px 7px 12px #7997b9;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.article-details .galary .col-lg-4>div img {
+    transition: 0.2s linear;
+}
+
+.article-details .galary .col-lg-4>div:hover img {
+    transform: scale(1.2);
+}

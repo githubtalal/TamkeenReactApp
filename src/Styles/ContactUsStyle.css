@@ -1,0 +1,132 @@
+.contact-intro {
+    height: 444px;
+}
+
+.contact-intro .swiper {
+    padding-bottom: 150px;
+}
+
+.contact-intro .swiper-wrapper {
+    padding-top: 100px;
+}
+
+.contact-intro img {
+    background-color: #4C3387;
+}
+
+.contact-intro .contact-intro-detail h3 {
+    color: #FFFFFF;
+    font-size: 57px;
+    margin-bottom: 20px;
+}
+
+.contact-intro .contact-intro-detail p {
+    color: #FFFFFF;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 140%;
+    width: 70%;
+}
+
+.contact-intro .contact-intro-detail button {
+    gap: 5px;
+    padding: 15px 24px;
+    background-color: #6341AF;
+    border-radius: 13px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.branchs a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #7E54E0;
+    font-weight: 700;
+}
+
+.branches-container .branch {
+    height: 450px;
+    width: 533px;
+    border-radius: 26px;
+}
+
+.branches-container .branch img {
+    border-radius: 26px;
+}
+
+.branches-container .branch-tag {
+    top: 74px;
+    left: 0;
+    border-top-right-radius: 31px;
+    border-bottom-right-radius: 31px;
+    padding: 18px 60px;
+    background-color: #7E54E0;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.branches-container .branch p {
+    bottom: 0;
+    background-color: #4C3387;
+    border-radius: 26px;
+    color: #F3EFFE;
+    font-weight: 700;
+    font-size: 32px;
+    padding: 30px;
+    margin-bottom: 0;
+    opacity: 0.7;
+}
+
+.branchs .swiper {
+    padding-inline: 50px;
+}
+
+.branchs > div > div > span {
+    color: #4E5566;
+    font-weight: 500;
+    font-size: 22px;
+    margin-inline: 15px ;
+}
+
+.branchs > div > p {
+    color: #1D2026;
+    font-size: 45px;
+    font-weight: 500;
+}
+
+.branchs > div > p > span {
+    padding-bottom: 10px;
+    border-bottom: 5px solid #6341AF;
+}
+
+.contact-entries input[type="submit"] {
+    background-color: #7E54E0;
+    border-radius: 14px;
+    padding: 12px 0;
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+
+.contact-entries p {
+    color: #5C5C5C;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.contact-methods-container > div {
+    gap: 20px;
+}
+
+.contact-methods-container h4 {
+    margin-bottom: 0 !important;
+}
+
+.contact-methods-container span {
+    color: #388574;
+    font-size: 16px;
+    font-weight: 500;
+}

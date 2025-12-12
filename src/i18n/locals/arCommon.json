@@ -1,0 +1,17 @@
+{
+  "welcome": "مرحباً",
+  "Create Account": "حساب جديد",
+  "Sign in": "دخول",
+  "Home": "الصفحة الرئيسية",
+  "About us": "من نحن",
+  "Contact": "اتصل بنا",
+  "Vacanceis": "فرص العمل",
+  "Articles": "المقالات",
+  "change_language": "تغيير اللغة",
+  "current_language": "اللغة الحالية: العربية",
+  "user_greeting": "مرحبا، {{name}}!",
+  "button": {
+    "submit": "إرسال",
+    "cancel": "إلغاء"
+  }
+}

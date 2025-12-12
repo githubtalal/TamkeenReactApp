@@ -1,0 +1,17 @@
+{
+  "welcome": "Welcome",
+  "Create Account": "Create Account",
+  "Sign in": "Sign in",
+  "Home": "Home",
+  "About us": "About Us",
+  "Contact" : "Contact",
+  "Vacanceis" : "Vacanceis",
+  "Articles": "Articles",
+  "change_language": "Change Language",
+  "current_language": "Current Language: English",
+  "user_greeting": "Hello, {{name}}!",
+  "button": {
+    "submit": "Submit",
+    "cancel": "Cancel"
+  }
+}

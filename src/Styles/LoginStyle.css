@@ -1,0 +1,119 @@
+
+.login{
+    margin-top: 100px;
+    height: 100vh;
+}
+
+.login > div:first-of-type {
+    padding-inline-start: calc(1.5rem * 0.5);
+}
+
+.login > div:last-of-type {
+    padding-inline: calc(1.5rem * 2.8);
+}
+
+.login > div:first-of-type img:nth-child(1) {
+    z-index: 2;
+    left: 45%;
+    top: 280px;
+    height: 300px;
+    width: 300px;
+}
+
+.login > div:first-of-type img:nth-child(2) {
+    z-index: 1;
+    left: 147px;
+    top: 80px;
+    height: 300px;
+    width: 300px;
+}
+
+.login > div:first-of-type img:nth-child(3) {
+    z-index: 5;
+    left: 65%;
+    top: 150px;
+    height: 300px;
+    width: 300px;
+}
+
+.login > div:first-of-type img:nth-child(4) {
+    height: 250px;
+    width: 250px;
+    top: 324px;
+    left: -310px;
+    z-index: 1;
+}
+
+
+.login > div:first-of-type img:nth-child(5) {
+    bottom: 175px;
+    left: 145px;
+    height: 447px;
+    width: 590px;
+    z-index: 4;
+}
+
+.login > div:first-of-type img:nth-child(6) {
+    top: -30px;
+    right: 103px;
+}
+
+.login input::placeholder {
+    color: #8C94A3;
+    font-size: 16px;
+}
+
+.login label:not([class="form-check-label"]) {
+    color: #1D2026;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.login label[class="form-check-label"]{
+    color: #4E5566;
+    font-weight: 400;
+}
+
+.eye-icon {
+    right: 10px;
+    top: 6px;
+    background-color: transparent;
+}
+
+.login button:not(.eye-icon) {
+    transition: 0.2s linear;
+}
+
+.login button:not(.eye-icon):hover {
+    box-shadow: 5px 5px 7px #b0adf6, -5px -5px 7px #b0adf6;
+}
+
+.sing-in-methods-tag {
+    margin-top: 30px;
+}
+
+.sign-in-methods-container > a {
+    border: 1px solid #CAB4FB;
+    border-radius: 36px 68px 68px 36px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+.sign-in-methods-container > a:hover {
+    box-shadow: 9px 9px 12px #e3e2e8 inset, -9px -9px 12px #e3e2e8 inset;
+    transform: scale(1.1);
+}
+
+.sign-in-methods-container > a > div {
+    padding-inline: 20px;
+    
+}
+
+.sign-in-methods-container span {
+    color: #1D2026;
+    font-size: 22px;
+    font-weight: 400;
+    vertical-align: center;
+    border-left: 1px solid #CAB4FB;
+}
