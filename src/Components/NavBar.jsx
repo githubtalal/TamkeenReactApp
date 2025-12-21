@@ -154,7 +154,7 @@ function ColorSchemesExample({ currentPage }) {
                                                 </Dropdown.Toggle>
 
                                                 <Dropdown.Menu className='dropDown-options'>
-                                                    <Dropdown.Item href={`users/${userInfo.user_id}`} >My Account</Dropdown.Item>
+                                                    <Dropdown.Item href={`users/edit/${userInfo.user_id}`} >My Account</Dropdown.Item>
                                                     <Dropdown.Item href="/articlesList" >My Articles</Dropdown.Item>
                                                     <Dropdown.Item href="/login" onClick={logout}>Logout</Dropdown.Item>
                                                     <Dropdown.Item href="/dashboard">Dashboard</Dropdown.Item>

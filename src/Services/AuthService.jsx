@@ -79,5 +79,18 @@ export const AuthService = {
         .then(data => {
             return data.user_picture.length > 0 ? data.user_picture[0].url : ''
         })
+    },
+    getSessionToken: function() {
+        return fetch(`${ApiConfig.BASE_URL_TAMKEEN}${ApiConfig.ENDPOINTS.SESSION_TOKEN}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => {
+            return res.text()
+        })
     }
+        
+       
 }

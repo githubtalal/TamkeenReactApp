@@ -18,15 +18,17 @@ import Vacancies from './Vacancies';
 import FAQs from './FAQs';
 import NavBar from './Components/NavBar';
 import Footer from './Components/Footer';
-import UserProfile from './UserProfile';
+import UserProfile from './UserComponents/UserProfile';
 import ArticlesList from './ArticleComponents/ArticlesList';
 import ShowArticle from './ArticleComponents/ShowArticle';
 import EditArticle from './ArticleComponents/EditArticle';
 import Dashboard from './Dashboard';
 import CategoriesList from './DashboardComponents/CategoriesList'
 import TestimonialsList from './DashboardComponents/TestimonialsList';
-import UsersList from './DashboardComponents/UsersList';
-import EditUser from './EditUser';
+import UsersList from './UserComponents/UsersList';
+import EditUser from './UserComponents/EditUser';
+import CreateBlog from './ArticleComponents/CreateBlog';
+import BlogsList from './ArticleComponents/BlogsList';
 
 function App() {
 
@@ -44,6 +46,7 @@ function App() {
           <Route path="contact-us" element={<ContactUs />} />
           <Route path='vacancies' element={<Vacancies />} />
           <Route path="users/edit/:uid" element={<EditUser />} />
+          <Route path='blogs/create' element={<CreateBlog />} />
           <Route path="articlesList" element={<ArticlesList currentPage={location.pathname} />} />
           <Route path='articles/:aid' element={<ShowArticle />} />
           <Route path='users/:uid' element={<UserProfile />} />
@@ -52,7 +55,7 @@ function App() {
           <Route path="*" element={<Page404 />} />
           <Route path='dashboard' element={<Dashboard currentPage={location.pathname} />}>
             <Route path='articlesList' element={<ArticlesList currentPage={location.pathname}/>} />
-            <Route path='categoriesList' element={<CategoriesList />} />
+            <Route path='blogsList' element={<BlogsList />} />
             <Route path='testimonialsList' element={<TestimonialsList />} />
             <Route path='usersList' element={<UsersList />} />
           </Route>

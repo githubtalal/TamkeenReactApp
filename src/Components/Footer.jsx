@@ -32,22 +32,22 @@ const Footer = () => {
             <>
                 <div className='footer-links d-flex align-tems-center justift-content-center'>
                     <div>
-                        <img src={logo} alt="" />
-                        <p>Aliquam rhoncus ligula est, non pulvinar elit convallis nec. Donec mattis odio at.</p>
+                        <img src={logo} alt="" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="linear"/>
+                        <p data-aos="zoom-out" data-aos-delay="1300" data-aos-duration="800" data-aos-easing="ease-in">Aliquam rhoncus ligula est, non pulvinar elit convallis nec. Donec mattis odio at.</p>
                         <div className='d-flex align-items-center social-links'>
-                            <button>
+                            <button data-aos="fade-right" data-aos-delay="1200" data-aos-duration="1000" data-aos-easing="linear">
                                 <FaFacebookF style={{ color: '#ffffff' }} />
                             </button>
-                            <button>
+                            <button data-aos="fade-right" data-aos-delay="800" data-aos-duration="1000" data-aos-easing="linear">
                                 <FaInstagram style={{ color: '#ffffff' }} />
                             </button>
-                            <button>
+                            <button data-aos="fade-right" data-aos-delay="600" data-aos-duration="1000" data-aos-easing="linear">
                                 <FaLinkedinIn style={{ color: '#ffffff' }} />
                             </button>
-                            <button>
+                            <button data-aos="fade-right" data-aos-delay="400" data-aos-duration="1000" data-aos-easing="linear">
                                 <FaTwitter style={{ color: '#ffffff' }} />
                             </button>
-                            <button>
+                            <button data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="linear">
                                 <FaYoutube style={{ color: '#ffffff' }} />
                             </button>
                         </div>

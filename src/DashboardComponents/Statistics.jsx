@@ -9,12 +9,12 @@ import Loading from '../Components/Loading'
 const Statistics = ({ currentPage }) => {
     const [nO_Articles, setNoArticles] = useState()
     const [nO_Users, setNoUsers] = useState()
-    const [nO_Categories, setNoCategories] = useState()
+    const [nO_Blogs, setNoBlogs] = useState()
     const [nO_Testimonials, setNoTestimonials] = useState()
 
     const [isNoArticlesLoading, setNoArticlesLoading] = useState(false)
     const [isNoUsersLoading, setNoUsersLoading] = useState(false)
-    const [isNoCategoriesLoading, setNoCategoriesLoading] = useState(false)
+    const [isNoBlogsLoading, setNoBlogsLoading] = useState(false)
     const [isNoTestimonialsLoading, setNoTestimonialsLoading] = useState(false)
 
     const userInfo = JSON.parse(localStorage.getItem('theUserData'))
@@ -45,15 +45,17 @@ const Statistics = ({ currentPage }) => {
             .finally(() => console.log('Done total of users'))
     }
 
-    const loadNoCategories = () => {
-        setNoCategoriesLoading(true)
-        CategoriesServices.getCategories()
+    const loadNoBlogs = () => {
+        setNoBlogsLoading(true)
+        ArticlesServices.getBlogs({
+            "credentials": userInfo.ps
+        })
             .then(data => {
-                setNoCategories(data.length)
-                setNoCategoriesLoading(false)
+                setNoBlogs(data.pager.total_items)
+                setNoBlogsLoading(false)
             })
             .catch(error => console.log(error))
-            .finally(() => console.log('Done total of categories'))
+            .finally(() => console.log('Done total of Blogs'))
     }
 
     const loadNotestimonials = () => {
@@ -68,15 +70,15 @@ const Statistics = ({ currentPage }) => {
     }
 
     useEffect(() => {
-        loadNoArticles()
+       // loadNoArticles()
         loadNoUsers()
-        loadNoCategories()
+        loadNoBlogs()
         loadNotestimonials()
     }, [])
 
     return (
         <div className='statistics d-flex align-items-center justify-content-between'>
-            <div className='nO_Users w-25 rounded p-3 text-center' style={{ backgroundColor: `${currentPage.includes('usersList') ? "#49369d7d" : "#9f93d74a"}` }}>
+            <div className='nO_Users rounded p-3 text-center' data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="1000" style={{ width: 'calc(100% / 3)', backgroundColor: `${currentPage.includes('usersList') ? "#49369d7d" : "#9f93d74a"}` }}>
                 <h3>Total Users</h3>
                 {
                     (isNoUsersLoading) ?
@@ -86,27 +88,17 @@ const Statistics = ({ currentPage }) => {
                 }
 
             </div>
-            <div className='nO_Articles w-25 rounded p-3 text-center' style={{ backgroundColor: `${currentPage.includes('articlesList') ? "#49369d7d" : "#9f93d74a"}` }}>
-                <h3>Total Articles</h3>
+            <div className='nO_Blogs rounded p-3 text-center' data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="1000" style={{ width: 'calc(100% / 3)', backgroundColor: `${currentPage.includes('blogsList') ? "#49369d7d" : "#9f93d74a"}` }}>
+                <h3>Total Blogs</h3>
                 {
-                    (isNoArticlesLoading) ?
+                    (isNoBlogsLoading) ?
                         <Loading />
                         :
-                        <p className='mt-2'>{nO_Articles}</p>
+                        <p className='mt-2'>{nO_Blogs}</p>
                 }
 
             </div>
-            <div className='nO_Categories w-25 rounded p-3 text-center' style={{ backgroundColor: `${currentPage.includes('categoriesList') ? "#49369d7d" : "#9f93d74a"}` }}>
-                <h3>Total Categories</h3>
-                {
-                    (isNoCategoriesLoading) ?
-                        <Loading />
-                        :
-                        <p className='mt-2'>{nO_Categories}</p>
-                }
-
-            </div>
-            <div className='nO_Testimonials w-25 rounded p-3 text-center' style={{ backgroundColor: `${currentPage.includes('testimonialsList') ? "#49369d7d" : "#9f93d74a"}` }}>
+            <div className='nO_Testimonials rounded p-3 text-center' data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="1000" style={{ width: 'calc(100% / 3)', backgroundColor: `${currentPage.includes('testimonialsList') ? "#49369d7d" : "#9f93d74a"}` }}>
                 <h3>Total Testimonials</h3>
                 {
                     (isNoTestimonialsLoading) ?

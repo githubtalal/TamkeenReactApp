@@ -37,9 +37,9 @@ const TopWriters = () => {
         <Loading />
         :
         <Container className='top-writers position-relative'>
-            <span className='position-absolute top-writer-tag'>View More</span>
+            <span className='position-absolute top-writer-tag' data-aos="zoom-in-left" data-aos-delay="500" data-aos-duration="1000">View More</span>
             <div className="d-flex justify-content-between align items center">
-                <h3>Check out our Top <span>Writers</span></h3>
+                <h3 data-aos="fade-right" data-aos-delay="600" data-aos-duration="1000">Check out our Top <span>Writers</span></h3>
                 <div>
                     <span>Thousands of users waiting for a Articles. Start writing & earning now!.</span>
                     <a href="">
@@ -67,7 +67,7 @@ const TopWriters = () => {
                 {
 
                     topWriters.map((topWriter, index) => (
-                        <SwiperSlide key={index} className='p-3'>
+                        <SwiperSlide key={index} className='p-3'data-aos="flip-up" data-aos-delay="400" data-aos-duration="1000">
                             <div>
                                 <img src={topWriter.wImg} alt="" className='img-fluid w-100' />
                             </div>

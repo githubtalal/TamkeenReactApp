@@ -37,36 +37,40 @@ const LatestArticles = () => {
     }, [])
 
     return (
-        (isLoading) ? 
-        <Loading />
-        :
-        <div className='latest-articles position-relative'>
-            <span className='latestArticle-tag position-absolute border-0'>Latest Articles</span>
-            <Container className="latestArticles-container">
-                <Row>
-                    {
-                        latestArticles.map(latestArticle => (
-                            <Col className='mb-4' lg={3} md={4} sm={2}>
-                                <div className="p-3 rounded article-card h-100">
-                                    <div>
-                                        <img src={ApiConfig.BASE_URL_TAMKEEN + latestArticle.field_image} alt="No image from Api" className='img-fluid rounded h-100 w-100' />
-                                    </div>
-                                    <div>
-                                        <span style={{ backgroundColor: `${categoryB_G.current === '#DBCCFC' ? '#FFF9E5' : '#DBCCFC'}` }}>{latestArticle.field_tags[0] ?? 'Science'}</span>
 
-                                        <h6>{latestArticle.title}</h6>
-                                        <div className='d-flex align-items-center'>
-                                            <div style={{ height: '40px', width: '40px' }}>
-                                                <img src={blueFeather} alt="" className='img-fluid h-100 w-100' />
+        <div className='latest-articles position-relative'>
+            <span className='latestArticle-tag position-absolute border-0' data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1500">Latest Articles</span>
+            <Container className="latestArticles-container">
+                {
+                    (isLoading) ?
+                        <Loading />
+                        :
+                        <Row>
+                            {
+                                latestArticles.map(latestArticle => (
+                                    <Col className='mb-4' lg={3} md={4} sm={2} data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" data-aos-easing="linear">
+                                        <div className="p-3 rounded article-card h-100">
+                                            <div>
+                                                <img src={ApiConfig.BASE_URL_TAMKEEN + latestArticle.field_image} alt="No image from Api" className='img-fluid rounded h-100 w-100' />
                                             </div>
-                                            <span>{latestArticle.author}</span>
+                                            <div>
+                                                <span style={{ backgroundColor: `${categoryB_G.current === '#DBCCFC' ? '#FFF9E5' : '#DBCCFC'}` }}>{latestArticle.field_tags[0] ?? 'Science'}</span>
+
+                                                <h6>{latestArticle.title}</h6>
+                                                <div className='d-flex align-items-center'>
+                                                    <div style={{ height: '40px', width: '40px' }}>
+                                                        <img src={blueFeather} alt="" className='img-fluid h-100 w-100' />
+                                                    </div>
+                                                    <span>{latestArticle.author}</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </Col>
-                        ))
-                    }
-                </Row>
+                                    </Col>
+                                ))
+                            }
+                        </Row>
+                }
+
             </Container>
         </div>
     )

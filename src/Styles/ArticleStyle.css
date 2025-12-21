@@ -16,7 +16,7 @@
     font-weight: 400;
 }
 
-.article-details> div > div img {
+.article-details .article-img {
     box-shadow: 7px 7px 12px #7997b9, -7px -7px 12px #7997b9;
 }
 

@@ -60,7 +60,7 @@ const Categories = () => {
                         </a>
                         <span className='cat-bio'>We have more category & subcategory.</span>
                     </div>
-                    <div style={{ fontWeight: '600', fontSize: '30px' }}>
+                    <div style={{ fontWeight: '600', fontSize: '30px' }} data-aos="fade-left" data-aos-delay="1000" data-aos-duration="1000">
                         Browse Our Articles <span className='position-relative'>Categories</span>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ const Categories = () => {
                     <Row>
                         {
                             articleCategories.map(articleCat => (
-                                <Col lg={4} className='mb-4'>
+                                <Col lg={4} className='mb-4' data-aos="flip-left" data-aos-delay="400" data-aos-duration="1200" data-aos-easing="linear">
                                     <div className='article-cat-details'>
                                         <div className="d-flex justify-content-center">
                                             <img src={articleCat.brand} alt="" style={{ marginBottom: '-100px' }} />

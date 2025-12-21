@@ -42,8 +42,8 @@ const Banner = () => {
                     {
                         contactUsIntroDetails.map(item => (
                             <SwiperSlide className='contact-intro-detail'>
-                                <h3>{item.title}</h3>
-                                <p>{item.description}</p>
+                                <h3  data-aos="fade-right" data-aos-delay="500" data-aos-duration="600" data-aos-easing="linear">{item.title}</h3>
+                                <p  data-aos="zoom-out" data-aos-delay="1000" data-aos-duration="600" data-aos-easing="linear">{item.description}</p>
                                 <button className='border-0 rounded d-flex align-items-center'>
                                     <FontAwesomeIcon icon={faEnvelope} />
                                     <h6 className='mb-0'>Copy Email</h6>

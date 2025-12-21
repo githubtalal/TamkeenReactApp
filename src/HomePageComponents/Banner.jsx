@@ -35,17 +35,17 @@ const Banner = () => {
                         <SwiperSlide className='position-relative'>
                             <div className="d-flex article align-items-center justify-centent-between">
                                 <div className='h-100'>
-                                    <h1 className='article-title'>{article.title}</h1>
-                                    <p className='article-desc'>{article.description}</p>
+                                    <h1 className='article-title' data-aos="fade-up" data-aos-delay="700" data-aos-duration="2000">{article.title}</h1>
+                                    <p className='article-desc' data-aos="zoom-in" data-aos-delay="1500" data-aos-duration="1000" data-aos-easing="linear">{article.description}</p>
                                     <div className="d-flex align-items-center article-btns">
                                         <button className='border-0'>{article.btn1}</button>
                                         <button className='border-0'>{article.btn2}</button>
                                     </div>
                                 </div>
                                 <div className='position-relative h-100'>
-                                    <img src={article.img1} alt="" className='position-absolute' />
-                                    <img src={article.img2} alt="" className='position-relative' />
-                                    <img src={article.img3} alt="" className='position-absolute' />
+                                    <img src={article.img1} alt="" className='position-absolute' data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000"/>
+                                    <img src={article.img2} alt="" className='position-relative' data-aos="fade-down" data-aos-delay="400" data-aos-duration="1000"/>
+                                    <img src={article.img3} alt="" className='position-absolute' data-aos="fade-left" data-aos-delay="500" data-aos-duration="1200"/>
                                     <img src={article.fthr} alt="" className='position-relative' />
                                     <img src={article.lVector} alt="" className='position-absolute' />
                                     <img src={article.sVector} alt="" className='position-relative' />

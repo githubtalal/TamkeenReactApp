@@ -135,7 +135,7 @@ const NewLogin = () => {
                     }}
                 >
                     <div className='mb-3'>
-                        <label htmlFor="userName mb-2">Email</label>
+                        <label htmlFor="userName mb-2">Username</label>
                         <input
                             type="text"
                             placeholder='Username or email address...'

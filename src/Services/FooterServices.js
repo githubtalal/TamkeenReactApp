@@ -64,7 +64,8 @@ export const FooterServices = {
                 }
             ]
         }
-    ]
+    ],
+    
 }
 
 

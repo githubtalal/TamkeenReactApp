@@ -35,12 +35,12 @@ const TopTestimonials = () => {
         <Loading />
         :
         <div className='top-testimonials position-relative'>
-            <span className='top-testimonials-tag position-absolute'>Top Testimonials</span>
+            <span className='top-testimonials-tag position-absolute' data-aos="zoom-in-right" data-aos-delay="700" data-aos-duration="500" data-aos-easing="linear">Top Testimonials</span>
             <Container>
                 <Row>
                     {
                         topTestimonials.map(item => (
-                            <Col lg={3} className='mb-4'>
+                            <Col lg={3} className='mb-4' data-aos="fade-up" data-aos-delay="400" data-aos-duration="500" data-aos-easing="linear">
                                 <div className='top-testimonial h-100'>
                                     <div className='d-flex align-items-center position-relative'>
                                         {item.body.replace(/<[^>]*>/g, '')}

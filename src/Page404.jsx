@@ -3,7 +3,6 @@ import oops from './assets/oops!.png'
 import errorCode1 from './assets/errorCode1.png'
 import errorCode2 from './assets/errorCode2.png'
 import errorCode3 from './assets/errorCode3.png'
-import { useLocation } from 'react-router-dom'
 
 const Page404 = () => {
   return (

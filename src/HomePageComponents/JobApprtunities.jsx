@@ -38,7 +38,7 @@ const JobApprtunities = () => {
         <Loading />
         :
         <div className='job-apprtunities position-relative'>
-            <span className="position-absolute job-apprtunities-tag">
+            <span className="position-absolute job-apprtunities-tag" data-aos="fade-left" data-aos-delay="400" data-aos-duration="1000">
                 Our Job Opprtunities
             </span>
             <Container>
@@ -56,7 +56,7 @@ const JobApprtunities = () => {
                                 <Row>
                                     {
                                         item.map(details => (
-                                            <Col lg={6} className='mb-4 job-apprtunity-container'>
+                                            <Col lg={6} className='mb-4 job-apprtunity-container' data-aos="zoom-in-up" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="linear">
                                                 <div className='d-flex job-apprtunity'>
                                                     <div>
                                                         <img src={details.jobCover} alt="" className='img-fluid h-100' />

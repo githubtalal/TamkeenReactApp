@@ -109,7 +109,8 @@
 }
 
 .users-container,
-.testimonials-list {
+.testimonials-list,
+.blogs-container {
   padding: 0;
   margin-top: 50px;
 }
@@ -136,7 +137,8 @@
   transition: transform 0.2s linear;
 }
 
-.users-container .user-item>div {
+.users-container .user-item>div,
+.blogs-container .blog-item > div {
   box-shadow: 3px 3px 12px #7da9eb;
   cursor: pointer;
 }
@@ -145,7 +147,8 @@
   transform: scaleX(1)
 }
 
-.users-container .user-item .img-container {
+.users-container .user-item .img-container,
+.blogs-container .blog-item .img-container {
   overflow: hidden;
 }
 
@@ -158,12 +161,14 @@
   height: 10%;
 }
 
-.users-container .user-item .img-container img {
+.users-container .user-item .img-container img,
+.blogs-container .blog-item .img-container img {
   transition: transform 0.3s linear;
   object-fit: cover;
 }
 
-.users-container .user-item>div:hover>div>img {
+.users-container .user-item>div:hover>div>img,
+.blogs-container .blog-item>div:hover>div>img {
   transform: scale(1.2);
 }
 
@@ -186,5 +191,6 @@
 }
 
 .user-details img {
-  box-shadow: 7px 7px 12px #7997b9, -7px -7px 12px #7997b9;
+  box-shadow: 10px 10px 25px 10px #7974ea;
+  object-fit: cover;
 }

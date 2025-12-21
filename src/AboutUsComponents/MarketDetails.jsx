@@ -39,8 +39,8 @@ const MarketDetails = () => {
                             <div className="d-flex align-items-center marketing-container">
                                 <div className='w-50'>
                                     <span>{marketingDetail.yearsRange}</span>
-                                    <h1>{marketingDetail.head}</h1>
-                                    <p>{marketingDetail.description}</p>
+                                    <h1 data-aos="fade-right" data-aos-delay="800" data-aos-duration="500" data-aos-easing="linear">{marketingDetail.head}</h1>
+                                    <p data-aos="zoom-in" data-aos-delay="1200" data-aos-duration="500" data-aos-easing="linear">{marketingDetail.description}</p>
                                 </div>
                                 <div className='w-50'>
                                     <img src={marketingDetail.image} alt="" className='img-fluid h-100' />

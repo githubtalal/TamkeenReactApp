@@ -40,7 +40,7 @@ const TestimonialsList = () => {
                     <Row>
                         {
                             topTestimonials.map(item => (
-                                <Col lg={3} className='mb-4'>
+                                <Col lg={3} className='mb-4' data-aos="fade-up" data-aos-delay="1000" data-aos-duration="600" data-aos-easing="linear">
                                     <div className='top-testimonial h-100'>
                                         <div className='d-flex align-items-center position-relative'>
                                             {item.body.replace(/<[^>]*>/g, '')}

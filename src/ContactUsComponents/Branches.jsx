@@ -36,7 +36,7 @@ const Branches = () => {
                     </a>
                     <span>We have more Branches to check out.</span>
                 </div>
-                <p>Browse Our <span>Branches</span></p>
+                <p data-aos="zoom-in-left" data-aos-delay="700" data-aos-duration="600" data-aos-easing="linear">Browse Our <span>Branches</span></p>
             </div>
             <Swiper
                 modules={[Virtual, Navigation]}
@@ -48,7 +48,7 @@ const Branches = () => {
                 className='branches-container'
             >
                 {branches.map((branch, index) => (
-                    <SwiperSlide key={index} virtualIndex={index} className='branch position-relative'>
+                    <SwiperSlide key={index} virtualIndex={index} className='branch position-relative' data-aos="zoom-in" data-aos-delay="600" data-aos-duration="600" data-aos-easing="linear">
                         <img src={branch.cover} alt="" className='img-fluid w-100 h-100' />
                         <span className='branch-tag position-absolute'>{branch.tag}</span>
                         <p className='position-absolute text-center'>{branch.brief}</p>

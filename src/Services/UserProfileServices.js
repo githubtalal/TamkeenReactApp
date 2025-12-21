@@ -12,6 +12,11 @@ export const UserProfileServices = {
                 {
                     "value": `${params.last_name}`
                 }
+            ],
+            "user_picture": [
+                {
+                    "target_id": params.target_id ?? 746
+                }
             ]
 
         }
@@ -31,6 +36,7 @@ export const UserProfileServices = {
                     return res.json()
                 }
             })
+            
     },
     uploadUserImage: function (params = {}) {
         return fetch(`${ApiConfig.BASE_URL_TAMKEEN}${ApiConfig.ENDPOINTS.UPLOAD_USER_IMAGE}?_format=json`, {
@@ -38,7 +44,30 @@ export const UserProfileServices = {
             headers: {
                 "Content-Type": 'application/octet-stream',
                 "X-CSRF-Token": `${params.csrf_token}`,
-                "Content-Disposition": `filename="${params.file_name}"`,
+                "Content-Disposition": `file; filename="${params.file_name}"`,
+                'Authorization': 'Basic ' + `${params.credentials}`
+            },
+            body: params.file
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(serverError => { throw new Error(serverError.message) })
+                } else {
+                    return res.json()
+                }
+            })
+            .then(data => {
+                return {
+                    "fid": data.fid[0].value,
+                    "url": ApiConfig.BASE_URL_TAMKEEN + data.uri[0].url
+                }
+            })
+    },
+    getAllUsers: function (params = {}) {
+        return fetch(`${ApiConfig.BASE_URL_TAMKEEN}${ApiConfig.ENDPOINTS.USERS}?_format=json&&page=${params.page_number}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
                 'Authorization': 'Basic ' + `${params.credentials}`
             }
         })
@@ -50,22 +79,6 @@ export const UserProfileServices = {
                 }
             })
     },
-    getAllUsers: function (params = {}) {
-        return fetch(`${ApiConfig.BASE_URL_TAMKEEN}${ApiConfig.ENDPOINTS.USERS}?_format=json&&page=${params.page_number ?? 0}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + `${params.credentials}`
-            }
-        })
-        .then(res => {
-            if (!res.ok) {
-                return res.json().then(serverError => { throw new Error(serverError.message) })
-            } else {
-                return res.json()
-            }
-        })
-    },
     getUserProfile: function (params = {}) {
         return fetch(`${ApiConfig.BASE_URL_TAMKEEN}${ApiConfig.ENDPOINTS.USER}/${params.user_id}?_format=json`, {
             method: 'GET',
@@ -74,13 +87,13 @@ export const UserProfileServices = {
                 'Authorization': 'Basic ' + `${params.credentials}`
             }
         })
-        .then(res => {
-            if (!res.ok) {
-                return res.json().then(serverError => { throw new Error(serverError.message) })
-            } else {
-                return res.json()
-            }
-        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(serverError => { throw new Error(serverError.message) })
+                } else {
+                    return res.json()
+                }
+            })
     },
     deleteUser: function (params = {}) {
         return fetch(`${ApiConfig.BASE_URL_TAMKEEN}${ApiConfig.ENDPOINTS.USER}/${params.user_id}?_format=json`, {
@@ -91,8 +104,8 @@ export const UserProfileServices = {
                 'Authorization': 'Basic ' + `${params.credentials}`
             }
         })
-        .then(res => {
-            return res
-        })
+            .then(res => {
+                return res
+            })
     }
 }

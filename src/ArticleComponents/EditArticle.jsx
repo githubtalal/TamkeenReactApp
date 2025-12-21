@@ -3,23 +3,18 @@ import { useParams } from 'react-router-dom'
 import { ArticlesServices } from '../Services/ArticlesServices'
 import Loading from '../Components/Loading'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Bounce, toast, ToastContainer } from 'react-toastify'
+//import { Bounce, toast, ToastContainer } from 'react-toastify'
+import toast, { Toaster } from 'react-hot-toast';
+import { IoIosClose } from "react-icons/io";
 
 const EditArticle = () => {
-    const notify = () => toast("Article Updated Successfully", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce
-    })
+    const notify = () => toast.success('Article Updated successfully', {
+        duration: 2000
+    });
 
 
     const [isLoadingSubmit, setLoadingSubmit] = useState(false)
+    const [selectedImgId, setSelectedImgId] = useState(0)
 
     const [articleDetails, setArticleDetails] = useState({
         "type": {
@@ -42,11 +37,7 @@ const EditArticle = () => {
     const userInfo = JSON.parse(localStorage.getItem('theUserData'))
     const { aid } = useParams()
     const [selectedImage, setSelectedImage] = useState(null);
-    const [newImageDetails, setNewImageDetails] = useState({
-        "url": "",
-        "target_id": "",
-        "target_uuid": ""
-    })
+    const [previewUrl, setPreviewUrl] = useState(null)
 
     const [isLoading, setLoading] = useState(true)
 
@@ -59,25 +50,20 @@ const EditArticle = () => {
             .then(data => {
                 setArticleDetails({
                     "type": {
-                        "value": data.type[0].target_id
+                        "value": data.type[0] ? data.type[0].target_id : ""
                     },
                     "title": {
-                        "value": data.title[0].value
+                        "value": data.title[0] ? data.title[0].value : ""
                     },
                     "description": {
-                        "value": data.body[0].value
+                        "value": data.body[0] ? data.body[0].value : ""
                     },
                     "image_url": {
-                        "value": data.field_image[0].url
+                        "value": data.field_image[0] ? data.field_image[0].url : ""
                     },
                     "galaries": {
                         "value": data.field_gallery
                     }
-                })
-
-                setNewImageDetails({
-                    ...newImageDetails,
-                    "target_id": data.field_image[0].target_id
                 })
                 setLoading(false)
             })
@@ -89,53 +75,50 @@ const EditArticle = () => {
         loadArticleDetails()
     }, [])
 
-    const updateArticle = () => {
-        ArticlesServices.updateArticle({
-            'articleId': aid,
-            'csrf_token': userInfo.csrf_token,
-            'credentials': userInfo.ps,
-            'body': articleDetails
-            //'field_image': newImageDetails
-        })
-        .then(data => {
-            setLoadingSubmit(false)
-            notify()
-        })
-        .catch(error => console.log(error))
-        .finally(() => {
-            console.log("Done")
-        })
-    }
-
     const callAPI = () => {
         setLoadingSubmit(true)
-        /*
         if (selectedImage) {
             uploadArticleImage()
-        }*/
-        updateArticle()
+        } else {
+            updateArticle()
+        }
+
     }
 
     const uploadArticleImage = () => {
         ArticlesServices.uploadArticleImage({
             'csrf_token': userInfo.csrf_token,
             'credentials': userInfo.ps,
-            'selected_file': selectedImage,
+            'file': selectedImage,
             'file_name': selectedImage.name
         })
-        .then(data => {
-            console.log(data)
-            setNewImageDetails({
-                ...newImageDetails,
-                "target_uuid": data.uuid[0].value
+            .then(data => {
+                console.log(data)
+                setPreviewUrl(data.url)
+                updateArticle(data.fid)
             })
-            setImageUploaded(true)
+            .catch(error => console.log(error))
+            .finally(() => {
+                console.log('Done')
+            })
+    }
 
+    const updateArticle = (imageId) => {
+        ArticlesServices.updateArticle({
+            'articleId': aid,
+            'csrf_token': userInfo.csrf_token,
+            'credentials': userInfo.ps,
+            'body': articleDetails,
+            'field_image': imageId
         })
-        .catch(error => console.log(error))
-        .finally(() => {
-            console.log('Done')
-        })
+            .then(data => {
+                setLoadingSubmit(false)
+                notify()
+            })
+            .catch(error => console.log(error))
+            .finally(() => {
+                console.log("Done")
+            })
     }
 
     return (
@@ -146,7 +129,7 @@ const EditArticle = () => {
                     <>
                         <div className="d-flex align-items-start justify-content-between mt-4">
                             <div style={{ width: '47%', height: '100%' }}>
-                                <img src={articleDetails.image_url.value} alt="No Article Image" className='img-fluid w-100 rounded' />
+                                <img src={previewUrl ?? articleDetails.image_url.value} alt="No Article Image" className='img-fluid w-100 rounded article-img' />
                             </div>
                             <form
                                 style={{ width: '47%', height: '100%' }}
@@ -183,7 +166,7 @@ const EditArticle = () => {
                                                 'description': {
                                                     "value": e.target.value
                                                 }
-                                            })}></textarea>
+                                            })} />
                                         {
                                             (articleDetails.description.value.length > 0 && articleDetails.description.value.length < 10) ?
                                                 <p className='text text-danger mt-2'>article description must have at least 10 characters</p>
@@ -195,18 +178,15 @@ const EditArticle = () => {
                                 <Row className='mt-4'>
                                     <Col>
                                         <label htmlFor="articleImage">Upload Image</label>
-                                        <input type="file" name="" id="articleImage" className='form-control' onChange={(e) => {
+                                        <input type="file" name="" id="articleImage" className='form-control' accept='image/jpeg image/png' onChange={(e) => {
+                                            console.log(e.target.files)
                                             setSelectedImage(e.target.files[0])
-                                            setNewImageDetails({
-                                                ...newImageDetails,
-                                                "url": articleDetails.image_url.value.substring(0, articleDetails.image_url.value.lastIndexOf('/') + 1) + e.target.files[0].name
-                                            })
                                         }} />
 
                                     </Col>
                                     <Col className="text-start">
                                         {selectedImage && (
-                                            <div>
+                                            <div className='position-relative'>
                                                 {/* Display the selected image */}
                                                 <img
                                                     alt="not found"
@@ -217,7 +197,7 @@ const EditArticle = () => {
                                                 />
                                                 <br />
                                                 {/* Button to remove the selected image */}
-                                                <button onClick={() => setSelectedImage(null)} className='rounded border-0 btn btn-danger'>Remove</button>
+                                                <button onClick={() => setSelectedImage(null)} className='rounded border-0 bg-transparent position-absolute top-0 right-0'><IoIosClose style={{ height: '50px', width: '50px', color: 'white', fontWeight: '500' }} /></button>
 
                                             </div>
                                         )}
@@ -235,18 +215,9 @@ const EditArticle = () => {
                                                 :
                                                 'Update'
                                         }
-                                        <ToastContainer
-                                            position="top-right"
-                                            autoClose={2000}
-                                            hideProgressBar={false}
-                                            newestOnTop={false}
-                                            closeOnClick={false}
-                                            rtl={false}
-                                            pauseOnFocusLoss
-                                            draggable
-                                            pauseOnHover
-                                            theme="dark"
-                                            transition={Bounce}
+                                        <Toaster
+                                            position="top-center"
+                                            reverseOrder={false}
                                         />
                                     </button>
                                 </center>

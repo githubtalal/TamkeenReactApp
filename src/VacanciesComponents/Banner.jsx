@@ -35,8 +35,8 @@ const Banner = () => {
                             <SwiperSlide className='jobs-intro-detail'>
                                 <div className='d-flex justify-content-between align-items-center'>
                                     <div className='w-50'>
-                                        <h1>{item.head}</h1>
-                                        <p>{item.description}</p>
+                                        <h1 data-aos="fade-right" data-aos-delay="1000" data-aos-duration="800">{item.head}</h1>
+                                        <p data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="1000">{item.description}</p>
                                         <a href="">
                                             <span>{item.viewJobBtn}</span>
                                             <img src={arrowOutlined} alt="" />
