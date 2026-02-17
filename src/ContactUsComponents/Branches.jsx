@@ -24,38 +24,51 @@ const Branches = () => {
     }, [])
 
     return (
-        (isLoading) ? 
-        <Loading />
-        :
-        <Container className='py-4 mt-4 branchs'>
-            <div className="d-flex justify-content-between align-items-center mb-4">
-                <div>
-                    <a href="">
-                        <img src={arrowLeft} alt="" />
-                        Browse All
-                    </a>
-                    <span>We have more Branches to check out.</span>
+        (isLoading) ?
+            <Loading />
+            :
+            <Container className='py-4 mt-4 branchs'>
+                <div className="d-flex justify-content-between align-items-center flex-wrap mb-4">
+                    <div>
+                        <a href="">
+                            <img src={arrowLeft} alt="" />
+                            Browse All
+                        </a>
+                        <span>We have more Branches to check out.</span>
+                    </div>
+                    <p data-aos="zoom-in-left" data-aos-delay="700" data-aos-duration="600" data-aos-easing="linear">Browse Our <span>Branches</span></p>
                 </div>
-                <p data-aos="zoom-in-left" data-aos-delay="700" data-aos-duration="600" data-aos-easing="linear">Browse Our <span>Branches</span></p>
-            </div>
-            <Swiper
-                modules={[Virtual, Navigation]}
-                slidesPerView={3}
-                centeredSlides={false}
-                spaceBetween={55}
-                navigation={true}
-                virtual
-                className='branches-container'
-            >
-                {branches.map((branch, index) => (
-                    <SwiperSlide key={index} virtualIndex={index} className='branch position-relative' data-aos="zoom-in" data-aos-delay="600" data-aos-duration="600" data-aos-easing="linear">
-                        <img src={branch.cover} alt="" className='img-fluid w-100 h-100' />
-                        <span className='branch-tag position-absolute'>{branch.tag}</span>
-                        <p className='position-absolute text-center'>{branch.brief}</p>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </Container>
+                <Swiper
+                    modules={[Virtual, Navigation]}
+                    breakpoints={{
+                        576: {
+                            slidesPerView: 1
+                        },
+                        768: {
+                            slidesPerView: 2
+                        },
+                        990: {
+                            slidesPerView: 2
+                        },
+                        1200: {
+                            slidesPerView: 3
+                        }
+                    }}
+                    centeredSlides={false}
+                    spaceBetween={55}
+                    navigation={true}
+                    virtual
+                    className='branches-container'
+                >
+                    {branches.map((branch, index) => (
+                        <SwiperSlide key={index} virtualIndex={index} className='branch position-relative' data-aos="zoom-in" data-aos-delay="500" data-aos-duration="500" data-aos-easing="linear">
+                            <img src={branch.cover} alt="" className='img-fluid w-100 h-100' />
+                            <span className='branch-tag position-absolute'>{branch.tag}</span>
+                            <p className='position-absolute text-center'>{branch.brief}</p>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </Container>
     )
 }
 

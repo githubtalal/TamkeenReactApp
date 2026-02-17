@@ -1,19 +1,12 @@
 export const ApiConfig = {
-    //BASE_URL: 'https://dummyjson.com',
     BASE_URL_TAMKEEN: 'https://tamkeen-dev.com',
     ENDPOINTS: {
-        /*
-                PRODUCT: '/products',
-        PRODUCT_SEARCH: '/products/search',
-        PRODUCT_CATEGORIES: '/products/categories',
-        PRODUCT_BY_CAT: '/products/category',
-         */
-
         SESSION_TOKEN: '/api/session/token',
         USER: '/api/user',
         USERS: '/api/users-list',
         TAGS: '/api/terms/tags',
         LOGIN: '/login',
+        LOGOUT: '/api/user/logout',
         REGISTER: '/registerpass',
         ARTICLES: '/api/blogs-api-current-user',
         BLOGS: '/api/blogs-api',

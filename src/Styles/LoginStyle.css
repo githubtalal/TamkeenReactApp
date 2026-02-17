@@ -39,23 +39,23 @@
 .login > div:first-of-type img:nth-child(4) {
     height: 250px;
     width: 250px;
-    top: 324px;
-    left: -310px;
+    left: 0;
+    top: 350px;
     z-index: 1;
 }
 
 
 .login > div:first-of-type img:nth-child(5) {
     bottom: 175px;
-    left: 145px;
+    left: 133px;
     height: 447px;
     width: 590px;
     z-index: 4;
 }
 
 .login > div:first-of-type img:nth-child(6) {
-    top: -30px;
-    right: 103px;
+    top: 100px;
+    left: 447px;
 }
 
 .login input::placeholder {
@@ -116,4 +116,14 @@
     font-weight: 400;
     vertical-align: center;
     border-left: 1px solid #CAB4FB;
+}
+
+@media (max-width: 1232px) {
+    .login > div:first-of-type {
+        display: none !important;
+    }
+
+    .login > div:last-of-type {
+        width: 100% !important
+    }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { UserProfileServices } from '../Services/UserProfileServices'
 import { Col, Container, Row } from 'react-bootstrap'
 import Loading from '../Components/Loading';
@@ -11,8 +11,11 @@ const UserProfile = () => {
         AOS.init();
     }, [])
 
+    const navigate = useNavigate()
     const userInfo = JSON.parse(localStorage.getItem('theUserData'))
-
+    if (!userInfo) {
+        return <Navigate to="/" replace />
+    }
     const [isLoading, setLoading] = useState(false)
 
     const [userDetails, setUserDetails] = useState({

@@ -29,15 +29,15 @@ const JobBenefits = () => {
 
     return (
         <Container className='job-benefits'>
-            <h3 data-aos="fade-right" data-aos-delay="700" data-aos-duration="800">Our Perks & <span>Benefits</span></h3>
+            <h3 data-aos="fade-right" data-aos-delay="4000" data-aos-duration="1000">Our Perks & <span>Benefits</span></h3>
             <div className='d-flex position-relative'>
-                <img src={feather} alt="" style={{ width: '190px', height: '198px' }}/>
+                
                     {
                         jobBenefits.map((jobBenefit, index) => (
-                            <Swiper pagination={true} modules={[Pagination]} className="mySwiper" style={{ width: 'calc((100% - 310px) / 4)', borderRadius: '59px' }}  data-aos="zoom-in" data-aos-delay={((index+1) % 2) * 800} data-aos-duration="800">
+                            <Swiper pagination={true} modules={[Pagination]} className="mySwiper" style={{ width: 'calc(80% / 4)', borderRadius: '59px' }}  data-aos="zoom-in" data-aos-delay="500" data-aos-duration="500">
                                 {
                                     jobBenefit.map(item => (
-                                        <SwiperSlide style={{ padding: '30px 24px' }} className='text-center'>
+                                        <SwiperSlide style={{ padding: '30px 0' }} className='text-center'>
                                             <center>
                                                 <img src={item.icon} alt="" />
                                             </center>

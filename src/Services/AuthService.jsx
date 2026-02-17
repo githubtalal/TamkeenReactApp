@@ -90,7 +90,23 @@ export const AuthService = {
         .then(res => {
             return res.text()
         })
-    }
-        
-       
+    },
+    logoutUser: function(params = {}) {
+        console.log(params.csrf_token)
+        return fetch(`${ApiConfig.BASE_URL_TAMKEEN}${ApiConfig.ENDPOINTS.LOGOUT}?_format=json&&token=${params.csrf_token}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'credentials': 'include',
+                'X-CSRF-Token': `${params.csrf_token}`
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(serverError => { throw new Error(serverError.message)})
+            }else {
+                return res.json()
+            }
+        })
+    } 
 }

@@ -22,11 +22,11 @@ const WebsiteLinks = () => {
         (isLoading) ?
             <Loading />
             :
-            <div className='websites-links d-flex justify-content-around align-items-center'>
+            <div className='websites-links d-flex justify-content-around align-items-center flex-wrap'>
 
                 {
                     websiteLinks.map(websiteLink => (
-                        <div className="website-link d-flex justify-content-center align-items-center" data-aos="zoom-out" data-aos-delay="700" data-aos-duration="1500" data-aos-easing="ease-out">
+                        <div className="website-link d-flex justify-content-center align-items-center mb-2" data-aos="zoom-out" data-aos-delay="500" data-aos-duration="800" data-aos-easing="ease-out">
                             <img src={websiteLink.icon} alt="" />
                             <img src={websiteLink.text} alt='' />
                             {websiteLink.textColor ? (<span style={{ color: `${websiteLink.textColor}`, fontWeight: '700', fontSize: '40px', verticalAlign: 'center', marginInlineStart: '6px' }}>{websiteLink.text}</span>) : ''}

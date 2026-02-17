@@ -9,8 +9,8 @@ import { Routes, Route, useLocation } from 'react-router'
 import Page404 from './Page404';
 import { AuthProvider } from './Contexts/AuthContext';
 import HomePage from './HomePage';
-import Login from './Login'
-import Register from './Register';
+import Login from './AuthComponents/Login'
+import Register from './AuthComponents/Register';
 import AboutUs from './AboutUs';
 
 import ContactUs from './ContactUs';
@@ -23,7 +23,6 @@ import ArticlesList from './ArticleComponents/ArticlesList';
 import ShowArticle from './ArticleComponents/ShowArticle';
 import EditArticle from './ArticleComponents/EditArticle';
 import Dashboard from './Dashboard';
-import CategoriesList from './DashboardComponents/CategoriesList'
 import TestimonialsList from './DashboardComponents/TestimonialsList';
 import UsersList from './UserComponents/UsersList';
 import EditUser from './UserComponents/EditUser';
@@ -47,15 +46,14 @@ function App() {
           <Route path='vacancies' element={<Vacancies />} />
           <Route path="users/edit/:uid" element={<EditUser />} />
           <Route path='blogs/create' element={<CreateBlog />} />
-          <Route path="articlesList" element={<ArticlesList currentPage={location.pathname} />} />
+          <Route path="blogsList" element={<BlogsList />} />
           <Route path='articles/:aid' element={<ShowArticle />} />
           <Route path='users/:uid' element={<UserProfile />} />
           <Route path='articles/edit/:aid' element={<EditArticle />} />
           <Route path="faqs" element={<FAQs />} />
           <Route path="*" element={<Page404 />} />
           <Route path='dashboard' element={<Dashboard currentPage={location.pathname} />}>
-            <Route path='articlesList' element={<ArticlesList currentPage={location.pathname}/>} />
-            <Route path='blogsList' element={<BlogsList />} />
+            <Route path='articlesList' element={<ArticlesList />} />
             <Route path='testimonialsList' element={<TestimonialsList />} />
             <Route path='usersList' element={<UsersList />} />
           </Route>

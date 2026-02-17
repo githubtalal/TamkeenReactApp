@@ -2,36 +2,40 @@ import React, { useEffect, useState, useContext } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { BsEyeFill } from "react-icons/bs";
 import { BsEyeSlashFill } from "react-icons/bs";
-import { AuthContext } from './Contexts/AuthContext';
+import { AuthContext } from '../Contexts/AuthContext';
 import { useNavigate } from 'react-router';
-import search from './assets/search.png'
-import facebook from './assets/facebook.png'
-import apple from './assets/apple.png'
-import heading from './assets/Heading.png'
-import tablet from './assets/tablet.jpg'
-import plant from './assets/plant.jpg'
-import buisenessMan from './assets/buisenessMan.jpg'
-import feather from './assets/feather.png'
-import longVector from './assets/longVector.png'
-import shortVector from './assets/shortVector.png'
-import { AuthService } from './Services/AuthService';
+import search from '../assets/search.png'
+import facebook from '../assets/facebook.png'
+import apple from '../assets/apple.png'
+import heading from '../assets/Heading.png'
+import tablet from '../assets/tablet.jpg'
+import plant from '../assets/plant.jpg'
+import buisenessMan from '../assets/buisenessMan.jpg'
+import feather from '../assets/feather.png'
+import longVector from '../assets/longVector.png'
+import shortVector from '../assets/shortVector.png'
+import { AuthService } from '../Services/AuthService';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
-
-    // handle register component with useContext "isInitialized"
-    // start ...
+    const notify = () => toast.success('User created successfully go to your email for activation', {
+        duration: 5000,
+        // Styling
+        style: {
+            color: '#5f3fadff',
+            fontSize: '20px'
+        },
+        // Change colors of success/error/loading icon
+        iconTheme: {
+            primary: '#463c6dff',
+            secondary: '#bdb7cdff',
+            height: '60px',
+            width: '60px'
+        }
+    });
 
     const { userInfo, isInitialized } = useContext(AuthContext)
     const navigate = useNavigate()
-
-   /*
-        useEffect(() => {
-        navigate('/')
-    }, [userInfo])
-   */
-
-
-    // end.
 
 
     const [registerData, setRegisterData] = useState(
@@ -90,11 +94,12 @@ const Register = () => {
 
         setIsLoading(true)
 
-            AuthService.registerUser(registerData)
+        AuthService.registerUser(registerData)
             .then((data) => {
                 console.log(data)
-
-                setRegisterSuccess(data.name[0].value)
+                document.getElementById("user-create").reset()
+                notify()
+                //setRegisterSuccess(data.name[0].value)
             })
             .catch((err) => {
                 console.log(err)
@@ -118,25 +123,18 @@ const Register = () => {
     }
     // end.
 
-    if (registerSuccess) {
-        console.log('succcessssss')
-        return (
-            <>
-                <h1>Hello {registerSuccess}, check your registered email for activation</h1></>
-        )
-    }
     return (
         <div className='login d-flex align-items-center justify-content-between'>
             <div className='position-relative h-100 w-50' style={{ backgroundColor: '#F3EFFE' }}>
                 <img src={tablet} alt="" className='position-absolute' />
-                <img src={plant} alt="" className='position-relative' />
+                <img src={plant} alt="" className='position-absolute' />
                 <img src={buisenessMan} alt="" className='position-absolute' />
-                <img src={feather} alt="" className='position-relative' />
+                <img src={feather} alt="" className='position-absolute' />
                 <img src={longVector} alt="" className='position-absolute' />
-                <img src={shortVector} alt="" className='position-relative' />
+                <img src={shortVector} alt="" className='position-absolute' />
             </div>
             <div className='w-50'>
-                <h1 className='mt-5 text-center'>Create your account</h1>
+                <h1 className='mt-5 text-center text text-primary'>Create your account</h1>
                 <br />
                 {
                     error ?
@@ -144,7 +142,7 @@ const Register = () => {
                         :
                         ''
                 }
-                <form
+                <form id="user-create"
                     onSubmit={(e) => {
                         e.preventDefault()
                         callAPI()
@@ -152,7 +150,7 @@ const Register = () => {
                 >
                     <Row className='mb-3'>
                         <Col>
-                            <label htmlFor="first-name">Full Name</label>
+                            <label htmlFor="first-name" className='text text-secondary'>Full Name</label>
                             <input
                                 type="text"
                                 placeholder='First Name'
@@ -174,7 +172,7 @@ const Register = () => {
                             />
                         </Col>
                         <Col>
-                            <label htmlFor="last-name" style={{visibility: 'hidden'}}>Last Name</label>
+                            <label htmlFor="last-name" style={{ visibility: 'hidden' }} className='text text-secondary'>Last Name</label>
                             <input
                                 type="text"
                                 placeholder='Last Name'
@@ -197,7 +195,7 @@ const Register = () => {
                     </Row>
                     <Row className='mb-3'>
                         <Col>
-                            <label htmlFor="mobile">Mobile</label>
+                            <label htmlFor="mobile" className='text text-secondary'>Mobile</label>
                             <input
                                 type="text"
                                 placeholder='ex: 0955 000 000'
@@ -218,7 +216,7 @@ const Register = () => {
                     </Row>
                     <Row className='mb-3'>
                         <Col>
-                            <label htmlFor="userName">Username</label>
+                            <label htmlFor="userName" className='text text-secondary'>Username</label>
                             <input
                                 type="text"
                                 placeholder='Username'
@@ -256,7 +254,7 @@ const Register = () => {
 
                     <Row className='mb-3'>
                         <Col>
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email" className='text text-secondary'>Email</label>
                             <input
                                 type="email"
                                 placeholder='example@email.com'
@@ -402,25 +400,29 @@ const Register = () => {
 
                                         'Create Account ->'
                                 }
+                                <Toaster
+                                    position="top-center"
+                                    reverseOrder={false}
+                                />
                             </button>
                         </div>
                     </div>
                 </form>
                 <img src={heading} alt="" className='sing-in-methods-tag w-100' />
-                <div className="d-flex justify-content-between align-items-center sign-in-methods-container mt-3">
-                    <a href="https://www.google.com" className='d-flex align-items-center' target='_blank'>
+                <div className="d-flex justify-content-between align-items-center sign-in-methods-container mt-3 flex-wrap">
+                    <a href="https://www.google.com" className='d-flex align-items-center mb-3' target='_blank'>
                         <div>
                             <img src={search} alt="" />
                         </div>
                         <span className='px-4 py-2'>Google</span>
                     </a>
-                    <a href="https://www.facebook.com" className='d-flex align-items-center' target='_blank'>
+                    <a href="https://www.facebook.com" className='d-flex align-items-center mb-3' target='_blank'>
                         <div>
                             <img src={facebook} alt="" />
                         </div>
                         <span className='px-4 py-2'>Facebook</span>
                     </a>
-                    <a href="" className='d-flex align-items-center' target='_black'>
+                    <a href="" className='d-flex align-items-center mb-3' target='_black'>
                         <div>
                             <img src={apple} alt="" />
                         </div>

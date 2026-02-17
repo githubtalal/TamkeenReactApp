@@ -9,7 +9,6 @@ import Loading from '../Components/Loading'
 const Statistics = ({ currentPage }) => {
     const [nO_Articles, setNoArticles] = useState()
     const [nO_Users, setNoUsers] = useState()
-    const [nO_Blogs, setNoBlogs] = useState()
     const [nO_Testimonials, setNoTestimonials] = useState()
 
     const [isNoArticlesLoading, setNoArticlesLoading] = useState(false)
@@ -70,9 +69,8 @@ const Statistics = ({ currentPage }) => {
     }
 
     useEffect(() => {
-       // loadNoArticles()
+        loadNoArticles()
         loadNoUsers()
-        loadNoBlogs()
         loadNotestimonials()
     }, [])
 
@@ -88,13 +86,13 @@ const Statistics = ({ currentPage }) => {
                 }
 
             </div>
-            <div className='nO_Blogs rounded p-3 text-center' data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="1000" style={{ width: 'calc(100% / 3)', backgroundColor: `${currentPage.includes('blogsList') ? "#49369d7d" : "#9f93d74a"}` }}>
-                <h3>Total Blogs</h3>
+            <div className='nO_Articles rounded p-3 text-center' data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="1000" style={{ width: 'calc(100% / 3)', backgroundColor: `${currentPage.includes('articlesList') ? "#49369d7d" : "#9f93d74a"}` }}>
+                <h3>Total Articles</h3>
                 {
-                    (isNoBlogsLoading) ?
+                    (isNoArticlesLoading) ?
                         <Loading />
                         :
-                        <p className='mt-2'>{nO_Blogs}</p>
+                        <p className='mt-2'>{nO_Articles}</p>
                 }
 
             </div>

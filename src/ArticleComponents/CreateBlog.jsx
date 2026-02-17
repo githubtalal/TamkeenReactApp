@@ -1,23 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { ArticlesServices } from '../Services/ArticlesServices'
 import { AuthService } from '../Services/AuthService'
 import { CategoriesServices } from '../Services/CategoriesServices'
-import { IoIosClose } from "react-icons/io";
+import { IoMdCloseCircle } from "react-icons/io";
 import toast, { Toaster } from 'react-hot-toast';
+import { AuthContext } from '../Contexts/AuthContext'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const CreateBlog = () => {
     const notify = () => toast.success('New Blog Added successfully', {
-        duration: 2000
+        duration: 2000,
+        // Styling
+        style: {
+            color: '#5f3fadff',
+            fontSize: '20px'
+        },
+        // Change colors of success/error/loading icon
+        iconTheme: {
+            primary: '#463c6dff',
+            secondary: '#bdb7cdff',
+            height: '60px',
+            width: '60px'
+        }
     });
 
     const [isSubmissionLoading, setSubmissionLoading] = useState(false)
-    const [allGalleryFilled, setGalleryFilled] = useState(false)
     const [categories, setCategories] = useState([])
     const [tags, setTags] = useState([])
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedGallaryImages, setGallaryImages] = useState([])
+
+    const navigate = useNavigate()
     const userInfo = JSON.parse(localStorage.getItem('theUserData'))
+     if (!userInfo) {
+            return <Navigate to="/" replace />
+        }
+
     const [blogDetails, setBlogDetails] = useState({
         "type": [{
             "target_id": "blog"
@@ -55,7 +74,7 @@ const CreateBlog = () => {
                         .then(data => {
                             const selectedImageId = data.fid
                             if (selectedGallaryImages) {
-                                uploadGallery(csrfToken ,selectedImageId)
+                                uploadGallery(csrfToken, selectedImageId)
                             } else {
                                 storeBlogDetails(csrfToken, selectedImageId)
                             }
@@ -96,12 +115,13 @@ const CreateBlog = () => {
             "title": blogDetails.title,
             "body": blogDetails.body,
             "field_category": blogDetails.field_category,
-            "field_image":  [{ "target_id": bannerId }] ,
+            "field_image": [{ "target_id": bannerId }],
             "field_gallery": galleryImages,
             "field_tags": blogDetails.field_tags
         })
             .then(data => {
                 setSubmissionLoading(false)
+                document.getElementById("article-create").reset()
                 notify()
             })
             .catch(error => console.log(error))
@@ -120,10 +140,11 @@ const CreateBlog = () => {
             "body": blogDetails.body,
             "field_category": blogDetails.field_category,
             "field_image": [{ "target_id": imageId }],
-            "field_tags": blogTags ?? blogDetails.field_tags
+            "field_tags": blogDetails.field_tags
         })
             .then(data => {
                 setSubmissionLoading(false)
+                document.getElementById("article-create").reset()
                 notify()
             })
             .catch(error => console.log(error))
@@ -159,7 +180,7 @@ const CreateBlog = () => {
             <center className='mb-4'>
                 <h1 className='text text-primary'>Create Blog</h1>
             </center>
-            <form method="post" onSubmit={e => {
+            <form method="post" id="article-create" onSubmit={e => {
                 e.preventDefault()
                 createBlog()
             }
@@ -211,17 +232,17 @@ const CreateBlog = () => {
                         {
                             tags.map(tag => (
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value={tag.id} onChange={e => {
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value={`tag_${tag.id}`} onChange={e => {
                                         setBlogDetails(prev => {
                                             if (e.target.checked) {
                                                 return {
                                                     ...prev,
-                                                    "field_tags": [...prev.field_tags, { "target_id": e.target.value }]
+                                                    "field_tags": [...prev.field_tags, { "target_id": parseInt(e.target.value.split('_')[1]) }]
                                                 }
                                             } else {
                                                 return {
                                                     ...prev,
-                                                    "field_tags": [...prev.field_tags.filter(tag => tag.target_id !== e.target.value)]
+                                                    "field_tags": [...prev.field_tags.filter(tag => tag.target_id !== parseInt(e.target.value.split('_')[1]))]
                                                 }
                                             }
                                         })
@@ -250,14 +271,14 @@ const CreateBlog = () => {
                                 />
                                 <br />
                                 {/* Button to remove the selected image */}
-                                <button type='button' onClick={() => setSelectedImage(null)} className='rounded border-0 bg-transparent position-absolute top-0 right-0'><IoIosClose style={{ height: '50px', width: '50px', color: 'white', fontWeight: '500' }} /></button>
+                                <button type='button' onClick={() => setSelectedImage(null)} className='remove-img rounded border-0 bg-transparent position-absolute top-0 right-0'><IoMdCloseCircle style={{ height: '30px', width: '30px', color: '#1e193dff', backgroundColor: '#ffffff', borderRadius: '50%' }} /></button>
 
                             </div>
                         )}
                     </Col>
                     <Col>
-                        <label htmlFor="blog-image">Choose Blog Image</label>
-                        <input type="file" name="blog-image" id="blog-image" accept='image/png image/JPEG' multiple className='form-control' onChange={(e) => {
+                        <label htmlFor="blog-gallery">Choose Gallery</label>
+                        <input type="file" name="blog-gallery" id="blog-gallery" accept='image/png image/JPEG' multiple className='form-control' onChange={(e) => {
                             setGallaryImages(Array.from(e.target.files))
                         }} />
                         <div className="d-flex align-items-center" style={{ gap: "5px" }}>
@@ -274,12 +295,11 @@ const CreateBlog = () => {
                                         />
                                         <br />
                                         {/* Button to remove the selected image */}
-                                        <button type='button' onClick={() => setGallaryImages(prev => prev.filter(image => image !== selectedImage))} className='rounded border-0 bg-transparent position-absolute top-0 right-0'><IoIosClose style={{ height: '50px', width: '50px', color: 'white', fontWeight: '500' }} /></button>
+                                        <button type='button' onClick={() => setGallaryImages(prev => prev.filter(image => image !== selectedImage))} className='remove-img rounded border-0 bg-transparent position-absolute top-0 right-0'><IoMdCloseCircle style={{ height: '30px', width: '30px', color: '#1e193dff', backgroundColor: '#ffffff', borderRadius: '50%' }} /></button>
                                     </div>
                                 ))
                             }
                         </div>
-
                     </Col>
                 </Row>
                 <button type="submit" className='btn btn-primary border-0 w-25'>
@@ -296,6 +316,7 @@ const CreateBlog = () => {
                 </button>
             </form>
         </Container>
+
     )
 }
 

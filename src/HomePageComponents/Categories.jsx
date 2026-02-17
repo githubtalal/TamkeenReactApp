@@ -52,15 +52,15 @@ const Categories = () => {
             <Loading /> 
             :
             <Container className='mt-4'>
-                <div className="d-flex justify-content-between article-cat-head">
-                    <div className="d-flex align-items-center justify-content-between">
+                <div className="d-flex justify-content-between article-cat-head flex-wrap">
+                    <div className="d-flex align-items-center justify-content-between mb-3 flex-wrap">
                         <a href="#">
                             <img src={arrowLeft} alt="" />
                             <span className='browsing-tag'>Browse All</span>
                         </a>
                         <span className='cat-bio'>We have more category & subcategory.</span>
                     </div>
-                    <div style={{ fontWeight: '600', fontSize: '30px' }} data-aos="fade-left" data-aos-delay="1000" data-aos-duration="1000">
+                    <div style={{ fontWeight: '600', fontSize: '30px' }} data-aos="fade-left" data-aos-delay="500" data-aos-duration="500">
                         Browse Our Articles <span className='position-relative'>Categories</span>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ const Categories = () => {
                     <Row>
                         {
                             articleCategories.map(articleCat => (
-                                <Col lg={4} className='mb-4' data-aos="flip-left" data-aos-delay="400" data-aos-duration="1200" data-aos-easing="linear">
+                                <Col lg={3} md={6} sm={12} className='mb-4 p-4' data-aos="flip-left" data-aos-delay="400" data-aos-duration="500" data-aos-easing="linear">
                                     <div className='article-cat-details'>
                                         <div className="d-flex justify-content-center">
                                             <img src={articleCat.brand} alt="" style={{ marginBottom: '-100px' }} />

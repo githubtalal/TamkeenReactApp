@@ -15,7 +15,7 @@ const HomePage = () => {
         AOS.init();
       }, [])
   return (
-    <div style={{ marginTop: '100px'}}>
+    <div style={{ marginTop: '100px', width: '100%'}}>
       <Banner />
       <Categories />
       <LatestArticles />

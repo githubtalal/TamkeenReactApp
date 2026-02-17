@@ -24,11 +24,11 @@
 
 .how-are-we {
     padding: 120px 0;
-        height: 800px;
+    height: 800px;
 }
 
 .how-are-we>div:first-of-type {
-    top: -60px
+    width: 60%;
 }
 
 .how-are-we>div:last-of-type {
@@ -48,13 +48,16 @@
     transform: rotate(7deg);
     height: 275px;
     width: 428px;
+    top: 0;
+    left: 0;
 }
 
 .how-are-we>div>img:nth-child(2) {
     width: 320px;
     height: 335px;
     top: 0;
-    left: 470px;
+    right: 0;
+    left: 450px;
     transform: rotate(2deg);
 }
 
@@ -62,15 +65,16 @@
     width: 391px;
     height: 275px;
     left: 0;
-        bottom: -25px;
+    top: 300px;
     transform: rotate(7deg);
 }
 
 .how-are-we>div>img:nth-child(4) {
-    width: 277px;
-    height: 240px;
-    bottom: -55px;
-    right: -306px;
+    width: 391px;
+    height: 275px;
+    top: 340px;
+    right: 0;
+    left: 390px;
     transform: rotate(-3deg);
 }
 
@@ -162,4 +166,108 @@
     padding: 18px 110px;
     border-bottom-right-radius: 31px;
     border-top-right-radius: 31px;
+}
+
+@media(max-width: 991px) {
+    .marketing-container {
+        flex-wrap: wrap;
+    }
+
+    .marketing-container>div {
+        width: 100% !important
+    }
+}
+
+@media (max-width: 1232px) {
+
+    .how-are-we>div:last-of-type p {
+        font-size: 20px !important;
+    }
+
+
+
+    .how-are-we>div>img {
+        height: 260px !important;
+        width: 220px !important;
+    }
+
+    .how-are-we>div>img:nth-child(4),
+    .how-are-we>div>img:nth-child(2) {
+        left: 280px !important;
+    }
+}
+
+@media (max-width: 993px) {
+    .how-are-we {
+        flex-wrap: wrap;
+        margin-bottom: 400px;
+        padding-inline: 20px;
+    }
+
+    .how-are-we>div {
+        width: 100% !important;
+    }
+
+    .how-are-we>div:first-of-type {
+        margin-bottom: 100px;
+
+    }
+
+    .how-are-we>div:last-of-type {
+        text-align: start !important;
+    }
+
+    .top-testimonial>div:first-of-type {
+        height: 70% !important;
+    }
+
+    .top-testimonial>div:last-of-type {
+        height: 30% !important;
+    }
+}
+
+@media (max-width: 580px) {
+    .top-testimonials-tag {
+        font-size: 40px !important;
+    }
+}
+
+@media (max-width: 541px) {
+    .top-testimonials-tag {
+        font-size: 39px !important;
+    }
+}
+
+@media (max-width: 534px) {
+    .top-testimonials-tag {
+        font-size: 30px !important;
+    }
+}
+
+@media (max-width: 714px) {
+
+    .how-are-we>div>img:nth-child(4),
+    .how-are-we>div>img:nth-child(2) {
+        left: 230px !important;
+    }
+}
+
+@media (max-width: 485px) {
+    .how-are-we>div>img {
+        height: 200px !important;
+        width: 200px !important;
+    }
+
+    .how-are-we>div>img:nth-child(5) {
+        left: 100px;
+    }
+
+    .how-are-we>div>img:nth-child(4),
+    .how-are-we>div>img:nth-child(2) {
+        left: 210px !important;
+    }
+
+    .top-testimonials-tag {
+        font-size: 25px !important;
+    }
 }

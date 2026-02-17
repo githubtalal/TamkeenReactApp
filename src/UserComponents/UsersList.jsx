@@ -8,10 +8,23 @@ import { LiaEdit } from "react-icons/lia";
 import Loading from '../Components/Loading';
 import { MdDeleteOutline } from "react-icons/md";
 import toast, { Toaster } from 'react-hot-toast';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const UsersList = () => {
     const notify = () => toast.success('User Deleted successfully', {
-        duration: 2000
+        duration: 2000,
+        // Styling
+        style: {
+            color: '#5f3fadff',
+            fontSize: '20px'
+        },
+        // Change colors of success/error/loading icon
+        iconTheme: {
+            primary: '#463c6dff',
+            secondary: '#bdb7cdff',
+            height: '60px',
+            width: '60px'
+        }
     });
 
     const [usersList, setUsersList] = useState([])
@@ -21,7 +34,9 @@ const UsersList = () => {
     let [currentPageNum, setCurrentPageNum] = useState(0)
 
     const userInfo = JSON.parse(localStorage.getItem('theUserData'))
-
+    if (!userInfo) {
+        return <Navigate to="/" replace />
+    }
     const getUserProfile = (user_id) => {
         UserProfileServices.getUserProfile({
             'user_id': user_id,
@@ -83,13 +98,14 @@ const UsersList = () => {
             "credentials": userInfo.ps
         })
             .then(data => {
-                loadUsersList(currentPageNum)
                 notify()
+                loadUsersList(currentPageNum)
+                
             })
             .catch(error => {
                 console.log(error)
                 setLoading(false)
-                
+
             })
             .finally(() => console.log('Done Deleting User'))
     }

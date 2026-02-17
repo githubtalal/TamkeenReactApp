@@ -1,10 +1,15 @@
 import React, { useEffect, useRef } from 'react'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import oops from './assets/oops!.png'
 import errorCode1 from './assets/errorCode1.png'
 import errorCode2 from './assets/errorCode2.png'
 import errorCode3 from './assets/errorCode3.png'
 
 const Page404 = () => {
+    useEffect(() => {
+      AOS.init();
+    }, [])
   return (
       <div className='error py-4'>
         <center>

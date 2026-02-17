@@ -1,19 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './Styles/LoginStyle.css'
+import '../Styles/LoginStyle.css'
 import { Col, Container, Form, Row } from 'react-bootstrap'
-import { AuthContext } from './Contexts/AuthContext'
+import { AuthContext } from '../Contexts/AuthContext'
 import { useNavigate } from 'react-router'
-import { AuthService } from './Services/AuthService'
-import tablet from './assets/tablet.jpg'
-import plant from './assets/plant.jpg'
-import buisenessMan from './assets/buisenessMan.jpg'
-import feather from './assets/feather.png'
-import longVector from './assets/longVector.png'
-import shortVector from './assets/shortVector.png'
-import search from './assets/search.png'
-import facebook from './assets/facebook.png'
-import apple from './assets/apple.png'
-import heading from './assets/Heading.png'
+import { AuthService } from '../Services/AuthService'
+import tablet from '../assets/tablet.jpg'
+import plant from '../assets/plant.jpg'
+import buisenessMan from '../assets/buisenessMan.jpg'
+import feather from '../assets/feather.png'
+import longVector from '../assets/longVector.png'
+import shortVector from '../assets/shortVector.png'
+import search from '../assets/search.png'
+import facebook from '../assets/facebook.png'
+import apple from '../assets/apple.png'
+import heading from '../assets/Heading.png'
 
 const NewLogin = () => {
     const [loginData, setLoginData] = useState(
@@ -117,17 +117,17 @@ const NewLogin = () => {
     }
 
     return (
-        <div className='login d-flex align-items-center justify-content-between'>
+        <div className='login d-flex align-items-center justify-content-between flex-wrap'>
             <div className='position-relative h-100 w-50' style={{ backgroundColor: '#F3EFFE' }}>
                 <img src={tablet} alt="" className='position-absolute' />
-                <img src={plant} alt="" className='position-relative' />
+                <img src={plant} alt="" className='position-absolute' />
                 <img src={buisenessMan} alt="" className='position-absolute' />
-                <img src={feather} alt="" className='position-relative' />
+                <img src={feather} alt="" className='position-absolute' />
                 <img src={longVector} alt="" className='position-absolute' />
-                <img src={shortVector} alt="" className='position-relative' />
+                <img src={shortVector} alt="" className='position-absolute' />
             </div>
             <div className='w-50'>
-                <h3 className='text-center'>Sign in to your account</h3>
+                <h1 className='text-center text text-primary'>Sign in to your account</h1>
                 <form
                     onSubmit={(e) => {
                         e.preventDefault()
@@ -135,7 +135,7 @@ const NewLogin = () => {
                     }}
                 >
                     <div className='mb-3'>
-                        <label htmlFor="userName mb-2">Username</label>
+                        <label htmlFor="userName" className='text text-secondary mb-2'>Username</label>
                         <input
                             type="text"
                             placeholder='Username or email address...'
@@ -156,7 +156,7 @@ const NewLogin = () => {
                         />
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor="password mb-2">Password</label>
+                        <label htmlFor="password" className='text text-secondary mb-2'>Password</label>
                         <input
                             type="password"
                             placeholder='Password'
@@ -207,20 +207,20 @@ const NewLogin = () => {
 
                 </form>
                 <img src={heading} alt="" className='sing-in-methods-tag w-100'/>
-                <div className="d-flex justify-content-between align-items-center sign-in-methods-container mt-5">
-                    <a href="https://www.google.com" className='d-flex align-items-center' target='_blank'>
+                <div className="d-flex justify-content-between align-items-center sign-in-methods-container mt-5 flex-wrap">
+                    <a href="https://www.google.com" className='d-flex align-items-center mb-3' target='_blank'>
                         <div>
                             <img src={search} alt="" />
                         </div>
                         <span className='px-4 py-2'>Google</span>
                     </a>
-                    <a href="https://www.facebook.com" className='d-flex align-items-center' target='_blank'>
+                    <a href="https://www.facebook.com" className='d-flex align-items-center mb-3' target='_blank'>
                         <div>
                             <img src={facebook} alt="" />
                         </div>
                         <span className='px-4 py-2'>Facebook</span>
                     </a>
-                    <a href="" className='d-flex align-items-center' target='_black'>
+                    <a href="" className='d-flex align-items-center mb-3' target='_black'>
                         <div>
                             <img src={apple} alt="" />
                         </div>

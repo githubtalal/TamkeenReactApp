@@ -47,7 +47,7 @@ const SideBar = ({ currentPage }) => {
                 </div>
                 <Menu style={{ marginTop: '160px' }}>
                     <MenuItem className={currentPage.includes('usersList') ? "rounded active" : "rounded"} component={<Link to="/dashboard/usersList" />} onClick={e => addActiveClass(e)}>Users List</MenuItem>
-                    <MenuItem className={currentPage.includes('blogsList') ? "rounded active" : "rounded"} component={<Link to="/dashboard/blogsList" />} onClick={e => addActiveClass(e)}>Blogs List</MenuItem>
+                    <MenuItem className={currentPage.includes('articlesList') ? "rounded active" : "rounded"} component={<Link to="/dashboard/articlesList" />} onClick={e => addActiveClass(e)}>Articles List</MenuItem>
                     <MenuItem className={currentPage.includes('testimonialsList') ? "rounded active" : "rounded"} component={<Link to="/dashboard/testimonialsList" />} onClick={e => addActiveClass(e)}>Testimonials List</MenuItem>
                 </Menu>
             </Sidebar>

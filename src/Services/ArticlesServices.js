@@ -43,18 +43,13 @@ export const ArticlesServices = {
                 'X-CSRF-Token': `${params.csrf_token}`
             },
             body: JSON.stringify({
-                "type": [{
-                    "target_id": `${params.body.type.value}`
-                }],
-                "body": [{
-                    "value": `${params.body.description.value}`
-                }],
-                "field_image": [{
-                    "target_id": params.field_image ?? 217
-                }],
-                "title": {
-                    "value": `${params.body.title.value}`
-                }
+                "title": params.title,
+                "type": params.type,
+                "body": params.body,
+                "field_image":  params.field_image,
+                "field_gallery": params.field_gallery,
+                "field_category": params.field_category,
+                "field_tags": params.field_tags
             })
         })
             .then(res => {
@@ -96,7 +91,7 @@ export const ArticlesServices = {
             headers: {
                 "Content-Type": "application/octet-stream",
                 "X-CSRF-Token": `${params.sessionToken}`,
-                "Content-Disposition": `filename="${params.file_name}"`,
+                "Content-Disposition": `file; filename="${params.file_name}"`,
                 "Authorization": 'Basic ' + `${params.credentials}`
             },
             body: params.file
@@ -123,7 +118,6 @@ export const ArticlesServices = {
             })
     },
     createBlog: function (params = {}) {
-        console.log(params)
         return fetch(`${ApiConfig.BASE_URL_TAMKEEN}${ApiConfig.ENDPOINTS.ARTICLE}?_format=json`, {
             method: "POST",
             headers: {
@@ -174,7 +168,7 @@ export const ArticlesServices = {
         if (options.tag) params.append('tag', options.tag)
 
         const url = `${ApiConfig.BASE_URL_TAMKEEN}${ApiConfig.ENDPOINTS.BLOGS}?${params.toString()}`
-        console.log(url)
+        
         return fetch(url, {
             method: 'GET',
             headers: {

@@ -1,8 +1,9 @@
 :root {
   --toastify-color-success: #4CAF50;
   --toastify-color-error: #F44336;
-  --toastify-toast-width: 400px;
-  --toastify-toast-bd-radius: 8px; /* border-radius */
+  --toastify-toast-width: 100%;
+  --toastify-toast-bd-radius: 8px;
+  /* border-radius */
   --toastify-font-family: sans-serif;
 }
 
@@ -10,6 +11,8 @@
 * {
   font-family: "Georgia", serif !important;
 }
+
+
 
 .root>nav {
   background-color: #6341AF !important;
@@ -20,12 +23,13 @@
   margin-inline-end: 30px !important;
 }
 
+
 .nav-link+p {
   background-color: #E7DDB5;
-  transition: transform 0.3s linear;
+  transition: transform 0.2s linear;
   width: 70%;
-  height: 3px;
-  transform: scale(0);
+  height: 2px;
+  transform: scaleX(0);
   transform-origin: bottom right;
   margin-bottom: 0 !important;
   margin-top: -5px;
@@ -33,12 +37,12 @@
 }
 
 .nav-link.active+p {
-  transform: scale(1);
+  transform: scaleX(1);
   transform-origin: bottom left;
 }
 
 .nav-link:hover+p {
-  transform: scale(1);
+  transform: scaleX(1);
   transform-origin: bottom left;
 }
 
@@ -92,6 +96,33 @@
   animation: rotateLoading 0.7s linear infinite;
 }
 
+.custom-offcanvas.show .user-info {
+  display: none !important;
+}
+
+.custom-offcanvas.show p {
+  width: 0%;
+}
+
+.custom-offcanvas.show a {
+  color: #0d232e;
+  font-size: 30px;
+}
+
+.custom-offcanvas.show .user-links {
+  display: inline-block !important;
+}
+
+.custom-offcanvas.show a:hover {
+  color: #b0dee7;
+}
+
+.custom-offcanvas.show a.active {
+  color: #b0dee7;
+}
+
+
+
 @keyframes rotateLoading {
   from {
     transform: rotate(0deg);
@@ -104,4 +135,28 @@
 
 .MuiPagination-root ul {
   padding-bottom: 30px;
+}
+
+.remove-img>* {
+  transition: 0.2s ease-out;
+}
+
+.remove-img:hover>* {
+  transform: scale(1.2);
+  color: #e83535 !important;
+}
+
+@media (max-width: 992px) {
+  .user-update-container > div {
+    flex-wrap: wrap;
+    padding-inline: 20px !important;
+  }
+
+  .user-update-container > div > * {
+    width: 100% !important;
+  }
+
+  .user-update-container > div > *:last-of-type {
+    margin-top: 30px !important;
+  }
 }

@@ -39,7 +39,7 @@ const LatestArticles = () => {
     return (
 
         <div className='latest-articles position-relative'>
-            <span className='latestArticle-tag position-absolute border-0' data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1500">Latest Articles</span>
+            <span className='latestArticle-tag position-absolute border-0' data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000">Latest Articles</span>
             <Container className="latestArticles-container">
                 {
                     (isLoading) ?
@@ -48,7 +48,7 @@ const LatestArticles = () => {
                         <Row>
                             {
                                 latestArticles.map(latestArticle => (
-                                    <Col className='mb-4' lg={3} md={4} sm={2} data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" data-aos-easing="linear">
+                                    <Col className='mb-4' lg={3} md={6} sm={12} data-aos="fade-up" data-aos-delay="400" data-aos-duration="600" data-aos-easing="linear">
                                         <div className="p-3 rounded article-card h-100">
                                             <div>
                                                 <img src={ApiConfig.BASE_URL_TAMKEEN + latestArticle.field_image} alt="No image from Api" className='img-fluid rounded h-100 w-100' />

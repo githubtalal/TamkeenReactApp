@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaListUl } from "react-icons/fa";
+import { PiListBold } from "react-icons/pi";
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const Header = () => {
@@ -8,10 +8,11 @@ const Header = () => {
             <h2>Dashboard User</h2>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    <FaListUl />
+                    <PiListBold />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                     <Dropdown.Item href="/">Home</Dropdown.Item>
+                    <Dropdown.Item href="/blogsList">All Articles</Dropdown.Item>
                     <Dropdown.Item href="/vacancies">Vacancies</Dropdown.Item>
                     <Dropdown.Item href="/about-us">About Us</Dropdown.Item>
                     <Dropdown.Item href="/contact-us">Contact Us</Dropdown.Item>

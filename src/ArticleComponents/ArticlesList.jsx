@@ -10,18 +10,35 @@ import { LiaEdit } from "react-icons/lia";
 import { MdDeleteOutline } from "react-icons/md";
 import Loading from '../Components/Loading';
 import toast, { Toaster } from 'react-hot-toast';
+import { AuthContext } from '../Contexts/AuthContext';
+import { Navigate, useNavigate } from 'react-router-dom'
 
 
 
-const ArticlesList = ({ currentPage }) => {
+const ArticlesList = () => {
     const notify = () => toast.success('Article Deleted successfully', {
-        duration: 2000
+        duration: 4000,
+        // Styling
+        style: {
+            color: '#5f3fadff',
+            fontSize: '20px'
+        },
+        // Change colors of success/error/loading icon
+        iconTheme: {
+            primary: '#463c6dff',
+            secondary: '#bdb7cdff',
+            height: '60px',
+            width: '60px'
+        }
     });
 
     const [articlesList, setArticlesList] = useState([])
     const [copyArticlesList, setCopyArticlesList] = useState([])
 
     const userInfo = JSON.parse(localStorage.getItem('theUserData'))
+     if (!userInfo) {
+            return <Navigate to="/" replace />
+        }
 
     const [pageCount, setPageCount] = useState()
 
@@ -36,7 +53,6 @@ const ArticlesList = ({ currentPage }) => {
             'credentials': userInfo.ps
         })
             .then(data => {
-                console.log(data)
                 setPageCount(data.pager.total_pages)
                 setArticlesList(data.rows)
                 setCopyArticlesList(data.rows)
@@ -89,7 +105,7 @@ const ArticlesList = ({ currentPage }) => {
     }
 
     return (
-        <Container style={{ padding: `${currentPage.includes('dashboard') ? "50px 0" : "130px 0"}` }} className='articles-list'>
+        <Container style={{ padding: "60px 0" }} className='articles-list'>
             <center className="mb-4 d-flex justify-content-between align-items-center">
                 <input type="search" name="article-search" id="article-search" className="form-control border-0 w-25 p-2" placeholder="Search.." style={{ backgroundColor: "#d9e2e7", color: "#422727ff", fontSize: "20px" }} onInput={e => filterArticles(e.target.value)} />
             </center>
@@ -99,13 +115,13 @@ const ArticlesList = ({ currentPage }) => {
                         <Loading />
                         :
                         articlesList.map(article => (
-                            <Col className='mb-4' lg={3} md={4} sm={2} data-aos="fade-up" data-aos-delay="500" data-aos-duration="600" data-aos-easing="linear">
+                            <Col className='mb-4' lg={3} md={4} sm={2}>
                                 <div className="p-3 rounded article-card h-100">
                                     <div>
                                         <img src={ApiConfig.BASE_URL_TAMKEEN + article.field_image} alt="No image from Api" className='img-fluid rounded h-100 w-100' />
                                     </div>
                                     <div className='h-50'>
-                                        <span style={{ backgroundColor: `${"#DBCCFC" ? "#FFF9E5" : "#DBCCFC"}` }}>{article.field_tags[0] ?? 'Science'}</span>
+
                                         <h6>{article.title}</h6>
                                         <div className='d-flex justify-content-between align-items-center'>
                                             <div className='d-flex align-items-center'>
